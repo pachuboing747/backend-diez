@@ -74,16 +74,13 @@ router.post("/products", isAuth, async (req, res) => {
     const { productId, title, price, description, stock, thumbnail, code } = req.body;
     const userId = req.user.id;
 
-    // Obtener el carrito del usuario
     let cart = await cartsManager.getById(userId);
 
     if (!cart) {
-      // Si el carrito no existe, crear uno
       const newCart = await cartsManager.create({ user: userId });
       cart = newCart;
     }
 
-    // Agregar el producto al carrito
     cart.products.push({
       productId,
       title,
@@ -94,10 +91,9 @@ router.post("/products", isAuth, async (req, res) => {
       code,
     });
 
-    // Guardar el carrito actualizado
     await cart.save();
 
-    res.redirect("/products");
+    res.redirect("/carts");
   } catch (error) {
     console.error(error);
     res.status(500).send("Error al agregar el producto al carrito");

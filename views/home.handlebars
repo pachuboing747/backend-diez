@@ -24,7 +24,16 @@
             <span class="uk-badge">{{this}}</span>
           {{/each}}
           <p>{{this.description}}</p>
-          <button onclick="addToCart({{this.id}})" class="uk-button uk-button-secondary uk-button-small">Agregar al carrito</button>
+          <div>
+               <form action="/products" method="POST">
+                <input type="hidden" name="productId" value="{{_id}}">
+                <input type="hidden" name="title" value="{{title}}">
+                <input type="hidden" name="price" value="{{price}}">
+                <input type="hidden" name="description" value="{{description}}">
+                <input type="hidden" name="stock" value="{{stock}}">
+                <button type="submit">Agregar al carrito</button>
+              </form>
+          </div>
         </div>
       </div>
     </div>
