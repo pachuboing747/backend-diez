@@ -58,9 +58,11 @@ class CartsManager {
   }
 
   async deleteAll() {
-    const result = await productModel.deleteMany()
-    console.log(result)
+    const result = await cartModel.deleteMany();
+    console.log(result);
+    return result.deletedCount > 0;
   }
+  
 
   async getPopulate(id) {
     try {

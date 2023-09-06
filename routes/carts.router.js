@@ -159,7 +159,6 @@ router.put('/:cid/products/:pid', async (req, res) => {
       return res.status(404).json({ message: 'Carrito no encontrado' });
     }
 
-    // Busca el producto en el carrito por su ID y actualiza la cantidad
     const productIndex = cart.products.findIndex(
       (product) => product.product.toString() === productId
     );

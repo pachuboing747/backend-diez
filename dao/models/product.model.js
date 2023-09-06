@@ -6,9 +6,8 @@ const schema = new Schema({
   title: String,
   description: String,
   price: Number,
-  keywords: [String],
   stock: { type: Number, default: 0 },
-  createdDate: { type: Number, default: Date.now() }
+  thumbnail: String,
 })
 
 schema.plugin(paginate)

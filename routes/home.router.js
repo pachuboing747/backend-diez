@@ -100,8 +100,6 @@ router.post("/products", isAuth, async (req, res) => {
   }
 });
 
-
-
 router.get('/profile', isAuth, (req, res) => {
   res.render('profile', {
     user: req.user ?  {
@@ -110,6 +108,7 @@ router.get('/profile', isAuth, (req, res) => {
     } : null,
   })
 })
+
 router.get("/carts", async(req, res)=>{
 
   const carts = await cartsManager.getAll()
